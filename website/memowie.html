@@ -1,0 +1,57 @@
+<style>
+    #spel {
+        width: 100%;
+        height: 100%;
+        background-color: #d18dd1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        text-align: center;
+    }
+
+    #bord {
+        border: 1px;
+        width: 50%;
+    }
+
+    .kaartje {
+        background-color: blueviolet;
+        height: 250px;
+    }
+
+    .kaartje img {
+        visibility: hidden;
+    }
+</style>
+<div id="spel">
+    <h1>memowie.nl</h1>
+    <p>leukste memory</p>
+
+    <table id="bord">
+        <tr>
+            <td class="kaartje"><img src="fotos/silvie.jpg" width="100%" alt="Silvie"></td>
+            <td class="kaartje"><img src="fotos/papa.jpg" width="100%" alt="Papa"></td>
+        </tr>
+        <tr>
+            <td class="kaartje"><img src="fotos/papa.jpg" width="100%" alt="Papa"></td>
+            <td class="kaartje"><img src="fotos/silvie.jpg" width="100%" alt="Silvie"></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    let gekozenkaart = 'geen'
+    Array.from(document.getElementsByClassName("kaartje")).forEach(
+        function (element, index, array) {
+            element.addEventListener("click", function () {
+                const foto = this.getElementsByTagName("img")[0]
+                alert(`vorige kaart ${gekozenkaart} en nu heb je gekozen ${foto.alt}`)
+
+                gekozenkaart = foto.alt
+                foto.style.visibility = "visible";
+            });
+        }
+    );
+
+</script>
